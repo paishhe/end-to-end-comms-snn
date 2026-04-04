@@ -18,6 +18,7 @@ class Receiver(nn.Module):
 
        
         self.conv8 = nn.Conv1d(64, Nt, kernel_size=3, padding=1) 
+<<<<<<< HEAD
 
         self.bn1 = nn.BatchNorm1d(256)
         self.bn2 = nn.BatchNorm1d(128)
@@ -26,6 +27,8 @@ class Receiver(nn.Module):
         self.bn5 = nn.BatchNorm1d(64)
         self.bn6 = nn.BatchNorm1d(64)
         self.bn7 = nn.BatchNorm1d(64)
+=======
+>>>>>>> fixed shape issues, bilinear operation
         self.fc_out = nn.Linear(256, 128)
         
 
@@ -39,6 +42,7 @@ class Receiver(nn.Module):
         x = F.relu(self.conv5(x))
         x = F.relu(self.conv6(x))  
         x = F.relu(self.conv7(x))  
+<<<<<<< HEAD
         x = self.conv8(x)
         x = self.fc_out(x)  # (batch, 128, signal_length)
 
@@ -46,6 +50,12 @@ class Receiver(nn.Module):
 
         # x = torch.sigmoid(self.fc_out(x))  
 
+=======
+        x = F.relu(self.conv8(x))
+
+        x = torch.sigmoid(self.fc_out(x))  
+
+>>>>>>> fixed shape issues, bilinear operation
         
 
         return x

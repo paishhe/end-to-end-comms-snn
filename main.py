@@ -39,19 +39,8 @@ class EndToEndSystem(nn.Module):
 
         features_ext = self.c_ext_snn(post_channel_signal)
 
-        post_channel_signal_flat = post_channel_signal.reshape(post_channel_signal.size(0), -1)  
-
-        bilinear_output = torch.einsum(
-    'bi,bj->bij',
-    post_channel_signal_flat,
-    features_ext
-)  
-
-        bilinear_permuted = bilinear_output.permute(0, 2, 1)
-
-        rx_signal = self.rx(bilinear_permuted) 
-
-        
+        rx_signal = self.rx(post_channel_signal + features_ext) # THIS OPERATION SHOULD NOT BE ADDITION
+        # LOOK INTO "BILINEAR OPERATION" THAT DOESN'T NEED SAME VECTOR LENGTHS TO OPERATE 
 
         return rx_signal
     
