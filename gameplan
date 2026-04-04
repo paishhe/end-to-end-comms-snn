@@ -1,0 +1,8 @@
+need to just make all the structures
+what does that mean? tx-side cnn autoencoder -> channel -> rx-side autoencoder
+i'll make the channel extractor too ofcourse
+basically implement the whole thing? is that needed? is all that effort neccessary? alt? -> make any simple tx setup, rx setup 
+issues? doing that on my own will require design won't it? i can quickly just make whatever is already specified. no design work needed. build what the paper did. seems to be vanilla dl -> then once that works, get to working on an snn based channel extractor.
+edits 
+
+
