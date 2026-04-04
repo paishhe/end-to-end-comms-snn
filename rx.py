@@ -8,7 +8,7 @@ class Receiver(nn.Module):
 
         
 
-        self.conv1 = nn.Conv1d(in_channels=2, out_channels=256, kernel_size=5, padding=2)
+        self.conv1 = nn.Conv1d(in_channels=40, out_channels=256, kernel_size=5, padding=2)
         self.conv2 = nn.Conv1d(256, 128, kernel_size=5, padding=2)
         self.conv3 = nn.Conv1d(128, 128, kernel_size=5, padding=2)
         self.conv4 = nn.Conv1d(128, 128, kernel_size=5, padding=2)
@@ -17,8 +17,9 @@ class Receiver(nn.Module):
         self.conv7 = nn.Conv1d(64, 64, kernel_size=5, padding=2)
 
        
-        self.conv8 = nn.Conv1d(64, Nt, kernel_size=8, padding=0) # i am using 8 instead of 3 in the paper to get the size to be 128
-        # i don't know how they've done it
+        self.conv8 = nn.Conv1d(64, Nt, kernel_size=3, padding=1) 
+        self.fc_out = nn.Linear(256, 128)
+        
 
     def forward(self, x):
       
@@ -30,7 +31,10 @@ class Receiver(nn.Module):
         x = F.relu(self.conv5(x))  
         x = F.relu(self.conv6(x))  
         x = F.relu(self.conv7(x))  
+        x = F.relu(self.conv8(x))
 
-        x = torch.sigmoid(self.conv8(x))  
+        x = torch.sigmoid(self.fc_out(x))  
+
+        
 
         return x

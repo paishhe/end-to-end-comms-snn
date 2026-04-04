@@ -37,17 +37,17 @@ class Transmitter(nn.Module):
 x = np.random.randn(500)
 x = torch.tensor(x, dtype=torch.float32)
 model = Transmitter()
-x = x.unsqueeze(0).unsqueeze(0) # the cnn expects input in the form (batch-size, no-of-channels, signal length) -> (1,1,128)
-output = model(x)
-print(output.shape) # we got shape (1,2,signal-length)  so the signal became two channels (complex) of the same length
+# x = x.unsqueeze(0).unsqueeze(0) # the cnn expects input in the form (batch-size, no-of-channels, signal length) -> (1,1,128)
+# output = model(x)
+# print(output.shape) # we got shape (1,2,signal-length)  so the signal became two channels (complex) of the same length
 
 
 
-# same length output as input? seems counter intuitive -> size is a fn of the padding -> which i put so that the size is the same
-# the paper seems to keep embedded vector size = input vector size
+# # same length output as input? seems counter intuitive -> size is a fn of the padding -> which i put so that the size is the same
+# # the paper seems to keep embedded vector size = input vector size
 
 
-'SET INPUT TO FIXED SIZE !'
-N = 128 # input size
+# 'SET INPUT TO FIXED SIZE !'
+# N = 128 # input size
 
 
