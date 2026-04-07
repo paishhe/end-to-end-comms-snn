@@ -15,7 +15,17 @@ class SyntheticBitsDataset(Dataset):
         return bits
 
 train_dataset = SyntheticBitsDataset(seq_len=128, dataset_size=10000)
+<<<<<<< HEAD
 test_dataset = SyntheticBitsDataset(seq_len=128, dataset_size=20000)
 
 train_loader = DataLoader(train_dataset, batch_size=8, shuffle=True)
 test_loader = DataLoader(test_dataset, batch_size=8, shuffle = True)
+=======
+test_dataset = SyntheticBitsDataset(seq_len=128, dataset_size=5000)
+
+train_loader = DataLoader(train_dataset, batch_size=8, shuffle=True)
+test_loader = DataLoader(test_dataset, batch_size=8, shuffle = True)
+
+sample = next(iter(train_loader))
+print("seq unique values:", sample.unique())
+>>>>>>> basic AE works and trains
