@@ -7,6 +7,7 @@ from channel import AWGNChannel
 from rx import Receiver
 from c_extractor import ChannelFeatureExtractor
 from synthetic_bit_data import test_loader, train_loader
+from spiking_c_extractor import ChannelFeatureSNN
 
 
 import torch
@@ -25,6 +26,8 @@ class EndToEndSystem(nn.Module):
         self.tx = Transmitter()
         self.rx = Receiver()
         self.c_ext = ChannelFeatureExtractor()
+        self.c_ext_snn = ChannelFeatureSNN()
+
         
 
     def forward(self, input_signal, SNR):
@@ -34,7 +37,7 @@ class EndToEndSystem(nn.Module):
         post_channel_signal = AWGNChannel(transmitted_signal, SNR)
         
 
-        features_ext = self.c_ext(post_channel_signal)
+        features_ext = self.c_ext_snn(post_channel_signal)
 
         post_channel_signal_flat = post_channel_signal.reshape(post_channel_signal.size(0), -1)  
 
@@ -58,7 +61,7 @@ optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
 loss_fn = nn.BCEWithLogitsLoss()
 
 num_epochs = 50
-SNR = 2
+SNR = 12
 
 print(f"Using device: {device}")
 
@@ -109,7 +112,7 @@ for epoch in range(num_epochs):
         for seq in test_loader:
             seq = seq.to(device)
             out = model(seq, SNR=SNR)
-            predicted = (out > 0.5).float()
+            predicted = (torch.sigmoid(out) > 0.5).float()
             correct_bits += (predicted == seq).sum().item()
             total_bits += seq.numel()
 
@@ -123,54 +126,6 @@ for epoch in range(num_epochs):
 
 
 
-import torch
-import torch.nn as nn
 
-from tx import Transmitter
-from channel import AWGNChannel
-from rx import Receiver
-from c_extractor import ChannelFeatureExtractor
-from synthetic_bit_data import test_loader, train_loader
-
-
-import torch
-import torchvision
-import torchvision.transforms as transforms
-from torch.utils.data import DataLoader
-
-
-
-
-class EndToEndSystem(nn.Module):
-
-    def __init__(self):
-        super().__init__()
-
-        self.tx = Transmitter()
-        self.rx = Receiver()
-        self.c_ext = ChannelFeatureExtractor()
-        
-
-    def forward(self, input_signal, SNR):
-
-        transmitted_signal = self.tx(input_signal)
-
-        post_channel_signal = AWGNChannel(transmitted_signal, SNR)
-
-        features_ext = self.c_ext(post_channel_signal)
-
-        rx_signal = self.rx(post_channel_signal + features_ext) # THIS OPERATION SHOULD NOT BE ADDITION
-        # LOOK INTO "BILINEAR OPERATION" THAT DOESN'T NEED SAME VECTOR LENGTHS TO OPERATE 
-
-        return rx_signal
-    
-
-model = EndToEndSystem()
-
-seq = next(iter(train_loader))
-with torch.no_grad():
-    out = model(seq, SNR = 5)
-
-print("output shape", out.shape)
 
 
