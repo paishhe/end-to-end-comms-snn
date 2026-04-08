@@ -16,14 +16,14 @@ class ChannelFeatureExtractor(nn.Module):
         self.fc2 = nn.Linear(100, 40)
 
     def forward(self, x):
-        # x: (batch, 1, 135)
+      
 
-        x = F.relu(self.conv1(x))  # (batch, 256, 135)
-        x = F.relu(self.conv2(x))  # (batch, 128, 135)
-        x = F.relu(self.conv3(x))  # (batch, 64, 135)
-        x = self.conv4(x)          # (batch, 2, 135)
+        x = F.relu(self.conv1(x))  
+        x = F.relu(self.conv2(x))  
+        x = F.relu(self.conv3(x))  
+        x = self.conv4(x)        
 
-        x = x.view(x.size(0), -1)  # flatten → (batch, 270)
+        x = x.view(x.size(0), -1)  
 
         x = F.relu(self.fc1(x))    # (batch, 100)
         x = torch.sigmoid(self.fc2(x))            # (batch, 40)
