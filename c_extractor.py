@@ -26,6 +26,6 @@ class ChannelFeatureExtractor(nn.Module):
         x = x.view(x.size(0), -1)  # flatten → (batch, 270)
 
         x = F.relu(self.fc1(x))    # (batch, 100)
-        x = self.fc2(x)            # (batch, 40)
+        x = torch.sigmoid(self.fc2(x))            # (batch, 40)
 
         return x

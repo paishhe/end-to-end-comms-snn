@@ -34,15 +34,19 @@ class EndToEndSystem(nn.Module):
         post_channel_signal = AWGNChannel(transmitted_signal, SNR)
         
 
-        # features_ext = self.c_ext(post_channel_signal)
+        features_ext = self.c_ext(post_channel_signal)
 
-        # post_channel_signal_flat = post_channel_signal.reshape(post_channel_signal.size(0), -1)  
+        post_channel_signal_flat = post_channel_signal.reshape(post_channel_signal.size(0), -1)  
 
-        # bilinear_output = torch.einsum('bi,bj->bij', post_channel_signal_flat, features_ext)
+        bilinear_output = torch.einsum(
+    'bi,bj->bij',
+    post_channel_signal_flat,
+    features_ext
+)  # (batch, 270, 40)
 
-        # bilinear_permuted = bilinear_output.permute(0, 2, 1)
+        bilinear_permuted = bilinear_output.permute(0, 2, 1)
 
-        rx_signal = self.rx(post_channel_signal) 
+        rx_signal = self.rx(bilinear_permuted) 
 
         
 
