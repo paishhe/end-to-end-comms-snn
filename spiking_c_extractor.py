@@ -31,11 +31,7 @@ class ChannelFeatureSNN(nn.Module):
         
 
     def forward(self, x):
-        """
-        x: (batch, 2, 128)
-        Returns: (batch, 40) — rate-coded vector, suitable for outer product
-        """
-        # Initialise membrane potentials for all LIF layers
+       
         mem1 = self.lif1.init_leaky()
         mem2 = self.lif2.init_leaky()
         mem3 = self.lif3.init_leaky()
@@ -48,26 +44,26 @@ class ChannelFeatureSNN(nn.Module):
         for t in range(self.T):
             
 
-            cur = self.conv1(x)              # (batch, 256, 128)
+            cur = self.conv1(x)              
             spk1, mem1 = self.lif1(cur, mem1)
 
-            cur = self.conv2(spk1)           # (batch, 128, 128)
+            cur = self.conv2(spk1)          
             spk2, mem2 = self.lif2(cur, mem2)
 
-            cur = self.conv3(spk2)           # (batch, 64, 128)
+            cur = self.conv3(spk2)          
             spk3, mem3 = self.lif3(cur, mem3)
 
-            cur = self.conv4(spk3)           # (batch, 2, 128)
+            cur = self.conv4(spk3)          
             spk4, mem4 = self.lif4(cur, mem4)
 
-            flat = spk4.view(spk4.size(0), -1)   # (batch, 256)
+            flat = spk4.view(spk4.size(0), -1)  
 
-            cur = self.fc1(flat)                  # (batch, 100)
+            cur = self.fc1(flat)                  
             spk5, mem5 = self.lif5(cur, mem5)
 
-            cur = self.fc2(spk5)                  # (batch, 40) — raw current, not spikes
-            spike_accumulator += cur              # accumulate membrane drive
+            cur = self.fc2(spk5)                  
+            spike_accumulator += cur            
 
         
-        out = spike_accumulator / self.T          # (batch, 40)
+        out = spike_accumulator / self.T          
         return out                                # ready for outer product
