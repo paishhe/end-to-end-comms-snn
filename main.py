@@ -45,7 +45,7 @@ class EndToEndSystem(nn.Module):
     'bi,bj->bij',
     post_channel_signal_flat,
     features_ext
-)  # (batch, 270, 40)
+)  
 
         bilinear_permuted = bilinear_output.permute(0, 2, 1)
 
@@ -61,7 +61,7 @@ optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
 loss_fn = nn.BCEWithLogitsLoss()
 
 num_epochs = 50
-SNR = 12
+SNR = 2
 
 print(f"Using device: {device}")
 
@@ -80,30 +80,7 @@ for epoch in range(num_epochs):
         optimizer.step()
         train_loss += loss.item()
 
-        # Add after first forward pass, before training loop
-        # model.eval()
-        # with torch.no_grad():
-        #     sample = next(iter(train_loader)).to(device)
-        #     print("Input shape:         ", sample.shape)
-        #     tx_out = model.tx(sample)
-        #     print("After TX:            ", tx_out.shape)
-        #     ch_out = AWGNChannel(tx_out, SNR)
-        #     print("After channel:       ", ch_out.shape)
-        #     feat = model.c_ext(ch_out)
-        #     print("Channel features:    ", feat.shape)
-        #     flat = ch_out.reshape(ch_out.size(0), -1)
-        #     print("Signal flat:         ", flat.shape)
-        #     bi = torch.einsum('bi,bj->bij', flat, feat)
-        #     print("Bilinear output:     ", bi.shape)
-        #     bi_p = bi.permute(0, 2, 1)
-        #     print("Bilinear permuted:   ", bi_p.shape)
-        #     rx_out = model.rx(bi_p)
-        #     print("RX output:           ", rx_out.shape)
-        #     print("Target shape:        ", sample.shape)
-        #     print("Output range: min={:.4f} max={:.4f} mean={:.4f}".format(
-        #         rx_out.min(), rx_out.max(), rx_out.mean()))
-
-
+        
     # validation
     model.eval()
     correct_bits = 0

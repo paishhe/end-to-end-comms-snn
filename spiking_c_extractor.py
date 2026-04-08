@@ -6,7 +6,7 @@ from snntorch import surrogate
 class ChannelFeatureSNN(nn.Module):
     def __init__(self, beta=0.9, T=16):
        
-       
+        super(ChannelFeatureSNN, self).__init__()
         self.T = T
 
         spike_grad = surrogate.fast_sigmoid()  
