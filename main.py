@@ -61,7 +61,7 @@ optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
 loss_fn = nn.BCEWithLogitsLoss()
 
 num_epochs = 50
-SNR = 2
+SNR = 2 
 
 print(f"Using device: {device}")
 
