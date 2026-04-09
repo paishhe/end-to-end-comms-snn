@@ -1,2 +1,2 @@
 for snr = 2, Epoch 50 | Loss: 0.1000 | BER: 0.0386
-forbeta = 0.9, T = 16,  lr = 1e-4 GETS STUCK AT LN2
+forbeta = 0.9, T = 16,  lr = 1e-3 GETS STUCK AT LN2 -> use lr = 1e-4
