@@ -1,0 +1,99 @@
+for snr = 2, Epoch 50 | Loss: 0.1000 | BER: 0.0386
+forbeta = 0.9, T = 16,  lr = 1e-3 GETS STUCK AT LN2 -> use lr = 1e-4
+
+
+f20220551@ipcadmin:~/bhatia/snn-channel-extractor$ /home/f20220551/bhatia/snn-channel-extractor/.venv/bin/python /home/f20220551/bhatia/snn-channel-extractor/main.py
+seq unique values: tensor([0., 1.])
+Using device: cuda
+Epoch 01 | Loss: 0.6139 | BER: 0.2724
+Epoch 02 | Loss: 0.4633 | BER: 0.1980
+Epoch 03 | Loss: 0.3423 | BER: 0.1445
+Epoch 04 | Loss: 0.2675 | BER: 0.1144
+Epoch 05 | Loss: 0.2173 | BER: 0.0823
+Epoch 06 | Loss: 0.1626 | BER: 0.0589
+Epoch 07 | Loss: 0.1148 | BER: 0.0424
+Epoch 08 | Loss: 0.0900 | BER: 0.0376
+Epoch 09 | Loss: 0.0759 | BER: 0.0348
+Epoch 10 | Loss: 0.0721 | BER: 0.0362
+Epoch 11 | Loss: 0.0755 | BER: 0.0336
+Epoch 12 | Loss: 0.0653 | BER: 0.0303
+Epoch 13 | Loss: 0.0642 | BER: 0.0254
+Epoch 14 | Loss: 0.0570 | BER: 0.0294
+Epoch 15 | Loss: 0.0593 | BER: 0.0228
+Epoch 16 | Loss: 0.0558 | BER: 0.0304
+Epoch 17 | Loss: 0.0589 | BER: 0.0203
+Epoch 18 | Loss: 0.0566 | BER: 0.0245
+Epoch 19 | Loss: 0.0586 | BER: 0.0231
+Epoch 20 | Loss: 0.0539 | BER: 0.0238
+Epoch 01 | Loss: 0.6296 | BER: 0.3142
+Epoch 02 | Loss: 0.5295 | BER: 0.2530
+Epoch 03 | Loss: 0.4063 | BER: 0.1568
+Epoch 04 | Loss: 0.2147 | BER: 0.0490
+Epoch 05 | Loss: 0.0643 | BER: 0.0136
+Epoch 06 | Loss: 0.0227 | BER: 0.0062
+Epoch 07 | Loss: 0.0131 | BER: 0.0042
+Epoch 08 | Loss: 0.0143 | BER: 0.0044
+Epoch 09 | Loss: 0.0090 | BER: 0.0036
+Epoch 10 | Loss: 0.0120 | BER: 0.0032
+Epoch 11 | Loss: 0.0065 | BER: 0.0032
+Epoch 12 | Loss: 0.0108 | BER: 0.0048
+Epoch 13 | Loss: 0.0055 | BER: 0.0025
+Epoch 14 | Loss: 0.0061 | BER: 0.0037
+Epoch 15 | Loss: 0.0071 | BER: 0.0051
+Epoch 16 | Loss: 0.0112 | BER: 0.0038
+Epoch 17 | Loss: 0.0074 | BER: 0.0033
+Epoch 18 | Loss: 0.0041 | BER: 0.0020
+Epoch 19 | Loss: 0.0089 | BER: 0.0033
+Epoch 20 | Loss: 0.0086 | BER: 0.0041
+Epoch 01 | Loss: 0.6317 | BER: 0.3020
+Epoch 02 | Loss: 0.5276 | BER: 0.2487
+Epoch 03 | Loss: 0.4493 | BER: 0.2072
+Epoch 04 | Loss: 0.3835 | BER: 0.1645
+Epoch 05 | Loss: 0.3048 | BER: 0.1267
+Epoch 06 | Loss: 0.2521 | BER: 0.1067
+Epoch 07 | Loss: 0.2190 | BER: 0.0958
+Epoch 08 | Loss: 0.1944 | BER: 0.0830
+Epoch 09 | Loss: 0.1652 | BER: 0.0750
+Epoch 10 | Loss: 0.1693 | BER: 0.0768
+Epoch 11 | Loss: 0.1562 | BER: 0.0601
+Epoch 12 | Loss: 0.1425 | BER: 0.0689
+Epoch 13 | Loss: 0.1462 | BER: 0.0685
+Epoch 14 | Loss: 0.1547 | BER: 0.0731
+Epoch 15 | Loss: 0.1494 | BER: 0.0628
+Epoch 16 | Loss: 0.1483 | BER: 0.0681
+Epoch 17 | Loss: 0.1412 | BER: 0.0678
+Epoch 18 | Loss: 0.1452 | BER: 0.0617
+Epoch 19 | Loss: 0.1493 | BER: 0.0621
+Epoch 20 | Loss: 0.1386 | BER: 0.0626
+Epoch 01 | Loss: 0.6187 | BER: 0.2673
+Epoch 02 | Loss: 0.4009 | BER: 0.1274
+Epoch 03 | Loss: 0.1656 | BER: 0.0374
+Epoch 04 | Loss: 0.0630 | BER: 0.0194
+Epoch 05 | Loss: 0.0450 | BER: 0.0119
+Epoch 06 | Loss: 0.0295 | BER: 0.0118
+Epoch 07 | Loss: 0.0342 | BER: 0.0119
+Epoch 08 | Loss: 0.0215 | BER: 0.0121
+Epoch 09 | Loss: 0.0315 | BER: 0.0092
+Epoch 10 | Loss: 0.0219 | BER: 0.0061
+Epoch 11 | Loss: 0.0254 | BER: 0.0102
+Epoch 12 | Loss: 0.0216 | BER: 0.0055
+Epoch 13 | Loss: 0.0257 | BER: 0.0108
+Epoch 14 | Loss: 0.0218 | BER: 0.0088
+Epoch 15 | Loss: 0.0192 | BER: 0.0109
+Epoch 16 | Loss: 0.0206 | BER: 0.0093
+Epoch 17 | Loss: 0.0172 | BER: 0.0100
+Epoch 18 | Loss: 0.0206 | BER: 0.0072
+Epoch 19 | Loss: 0.0180 | BER: 0.0126
+Epoch 20 | Loss: 0.0193 | BER: 0.0087
+Traceback (most recent call last):
+  File "/home/f20220551/bhatia/snn-channel-extractor/main.py", line 111, in <module>
+    plt.plot(SNR_range, ber_list, marker='o')
+  File "/home/f20220551/bhatia/snn-channel-extractor/.venv/lib/python3.10/site-packages/matplotlib/pyplot.py", line 3838, in plot
+    return gca().plot(
+  File "/home/f20220551/bhatia/snn-channel-extractor/.venv/lib/python3.10/site-packages/matplotlib/axes/_axes.py", line 1777, in plot
+    lines = [*self._get_lines(self, *args, data=data, **kwargs)]
+  File "/home/f20220551/bhatia/snn-channel-extractor/.venv/lib/python3.10/site-packages/matplotlib/axes/_base.py", line 297, in __call__
+    yield from self._plot_args(
+  File "/home/f20220551/bhatia/snn-channel-extractor/.venv/lib/python3.10/site-packages/matplotlib/axes/_base.py", line 494, in _plot_args
+    raise ValueError(f"x and y must have same first dimension, but "
+ValueError: x and y must have same first dimension, but have shapes (1,) and (4,)
