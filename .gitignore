@@ -1,2 +1,11 @@
+torch_env/
 __pycache__/
 *.pyc
+.cache/
+.local/
+.vscode-server/
+.copilot/
+.bash_history
+.wget-hsts
+.gitconfig
+get-pip.py
